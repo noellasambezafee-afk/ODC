@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <!-- Importation des polices Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;700;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- FontAwesome pour les icônes -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+
+    
+</head>
+<body>
+    
+    <header>
+        <a href="hero.html" class="logo-menu">No <span>Ella</span></a>
+        
+        <button class="menu-toggle" id="mobile-menu-btn" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <ul class="nav-links" id="nav-links">
+            <li><a href="hero.html">Accueil</a></li>
+            <li><a href="stats_vid.html">Statistiques & Vidéos</a></li>
+            <li><a href="about.html">À propos & Photos</a></li>
+            <li><a href="service.html" class="active">Services</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </header>
+
+        <div class="grid-2-col">
+            <!-- SECTION 6 : SERVICES -->
+            <section id="services" class="card section-bg">
+                <h2 class="section-title">SERVICES <span class="script-subtitle">Ampela</span></h2>
+                <div class="services-list">
+                    <div class="service-item">
+                        <div class="service-icon"><img src="./images/image01.jpg" alt="Icon"></div>
+                        <div class="service-info">
+                            <h4>UGC PHOTOS</h4>
+                            <p>Styled, high-res lifestyle or product images for social media & ads.</p>
+                        </div>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-icon"><img src="./images/image02.jpg" alt="Icon"></div>
+                        <div class="service-info">
+                            <h4>SHORT-FORM VIDEOS</h4>
+                            <p>Voiceovers, unboxings, tutorials, trends — perfect for Reels & TikTok.</p>
+                        </div>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-icon"><img src="./images/image03.jpg" alt="Icon"></div>
+                        <div class="service-info">
+                            <h4>PRODUCT REVIEWS</h4>
+                            <p>Authentic, on-camera reviews highlighting product benefits.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 7 : TOP PERFORMING VIDEO -->
+            <section id="top-video" class="card section-bg-white">
+                <h2 class="section-title">TOP - PERFORMING <span class="script-subtitle">video</span></h2>
+                <div class="top-video-layout">
+                    <div class="top-video-text">
+                        <p>A quick styling reel created for a beauty brand's seasonal launch. Focused on showing product versatility with smooth transitions, clear framing, and movement aesthetics.</p>
+                        <p class="sub">📱 Captured on iPhone 15 Pro Max, edited in CapCut.</p>
+                    </div>
+                    <div class="top-video-metrics">
+                        <div class="metric-row"><span>Views:</span> <span>62,000</span></div>
+                        <div class="metric-row"><span>Likes:</span> <span>4,320</span></div>
+                        <div class="metric-row"><span>Comments:</span> <span>280</span></div>
+                        <div class="metric-row"><span>Saves:</span> <span>150</span></div>
+                        <div class="metric-row"><span>Shares:</span> <span>890</span></div>
+                        <br>
+                        <div class="metric-row" style="font-weight: 700; color: #2c3e50;"><span>10.0% ER</span></div>
+                    </div>
+                </div>
+                <div class="top-img-wrap" style="margin-top: 15px; max-width: 400px; margin-left: auto;">
+                    <img src="./images/image01.jpg" alt="Top Performing Video">
+                </div>
+            </section>
+        </div>
+
+<!-- JAVASCRIPT POUR LE MENU MOBILE ET LE SCROLL -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.getElementById('mobile-menu-btn');
+            const navLinks = document.getElementById('nav-links');
+            const links = navLinks.querySelectorAll('a');
+
+            // 1. Ouvrir / Fermer le menu sur mobile
+            menuToggle.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+                
+                // Animation du burger vers croix
+                const spans = this.querySelectorAll('span');
+                if(navLinks.classList.contains('active')) {
+                    spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                    spans[1].style.opacity = '0';
+                    spans[2].style.transform = 'rotate(-45deg) translate(7px, -7px)';
+                } else {
+                    spans[0].style.transform = 'none';
+                    spans[1].style.opacity = '1';
+                    spans[2].style.transform = 'none';
+                }
+            });
+
+            // 2. Fermer le menu automatiquement quand on clique sur un lien
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    // Fermer le menu mobile
+                    navLinks.classList.remove('active');
+                    const spans = menuToggle.querySelectorAll('span');
+                    spans[0].style.transform = 'none';
+                    spans[1].style.opacity = '1';
+                    spans[2].style.transform = 'none';
+                });
+            });
+
+            // 3. Mettre en surbrillance le lien actif lors du défilement (Scroll Spy)
+            const sections = document.querySelectorAll('section[id]');
+            
+            window.addEventListener('scroll', function() {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - 150; // Marge ajustable
+                    if (scrollY >= sectionTop) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                links.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === '#' + current) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

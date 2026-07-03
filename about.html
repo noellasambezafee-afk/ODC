@@ -1,0 +1,129 @@
+        <!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <!-- Importation des polices Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;700;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- FontAwesome pour les icônes -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+
+    
+</head>
+<body>
+
+    <header>
+        <a href="hero.html" class="logo-menu">No <span>Ella</span></a>
+        
+        <button class="menu-toggle" id="mobile-menu-btn" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <ul class="nav-links" id="nav-links">
+            <li><a href="hero.html">Accueil</a></li>
+            <li><a href="stats_vid.html">Statistiques & Vidéos</a></li>
+            <li><a href="about.html" class="active">À propos & Photos</a></li>
+            <li><a href="service.html">Services</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </header>
+
+        <div class="grid-2-col">
+            <!-- SECTION 4 : ABOUT -->
+            <section id="about" class="card section-bg">
+                <div class="about-grid">
+                    <img src="./images/image01.jpg" alt="About Arden">
+                    <div class="about-text">
+                        <h2>ABOUT ME <span class="script-subtitle">Ampela</span></h2>
+                        <h3>NOELLA SAMBEZAFEE</h3>
+                        <p><i>Diplômé en Science Sociale.</i></p>
+                        <p>Hello, Je suis une personne engagée, dynamique et passionnee par le travail humanitaire ainsi que communautaire.</p>
+                        <p>Bonne capacite de sensibilisation, mobilisation sociale et communication interpersonnelle. Organisee, creative et autonome.</p>
+                        <p>Motivée par la volonte d apporter un impact positif au sein des communautes.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 5 : PHOTOGRAPHY -->
+            <section id="photo" class="card section-bg-white">
+                <h2 class="section-title">OBJECTIFS <span class="script-subtitle">Ampela</span></h2>
+                <div class="photo-grid">
+                    <div class="photo-text">
+                        <p>En ce moment a la recherche de nouvelle opportunite proffessionnelle me permettant de progresser comme personnelle, polyvalente, honnête et perfectionniste de nature sont les maitres mots de mon comportement professionnel.</p><br>
+                        <p>La curiosite, la soif d apprendre et le desir de developper mes connaissances font parties de mes ambitions.</p>
+                    </div>
+                    <div class="photo-collage">
+                        <img src="./images/image03.jpg" class="tall" alt="Photo 1">
+                        <img src="./images/image02.jpg" alt="Photo 2">
+                        <img src="./images/image01.jpg" alt="Photo 3">
+                        <img src="./images/image01.jpg" alt="Photo 4">
+                    </div>
+                </div>
+            </section>
+        </div>
+
+<!-- JAVASCRIPT POUR LE MENU MOBILE ET LE SCROLL -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.getElementById('mobile-menu-btn');
+            const navLinks = document.getElementById('nav-links');
+            const links = navLinks.querySelectorAll('a');
+
+            // 1. Ouvrir / Fermer le menu sur mobile
+            menuToggle.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+                
+                // Animation du burger vers croix
+                const spans = this.querySelectorAll('span');
+                if(navLinks.classList.contains('active')) {
+                    spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                    spans[1].style.opacity = '0';
+                    spans[2].style.transform = 'rotate(-45deg) translate(7px, -7px)';
+                } else {
+                    spans[0].style.transform = 'none';
+                    spans[1].style.opacity = '1';
+                    spans[2].style.transform = 'none';
+                }
+            });
+
+            // 2. Fermer le menu automatiquement quand on clique sur un lien
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    // Fermer le menu mobile
+                    navLinks.classList.remove('active');
+                    const spans = menuToggle.querySelectorAll('span');
+                    spans[0].style.transform = 'none';
+                    spans[1].style.opacity = '1';
+                    spans[2].style.transform = 'none';
+                });
+            });
+
+            // 3. Mettre en surbrillance le lien actif lors du défilement (Scroll Spy)
+            const sections = document.querySelectorAll('section[id]');
+            
+            window.addEventListener('scroll', function() {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - 150; // Marge ajustable
+                    if (scrollY >= sectionTop) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                links.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === '#' + current) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

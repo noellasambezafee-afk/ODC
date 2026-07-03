@@ -30,8 +30,8 @@
 
         h1, h2, h3 { font-weight: 700; letter-spacing: -0.02em; }
         .script-title { font-family: 'Great Vibes', cursive; color: var(--accent-blue); }
-        .script-subtitle { font-family: 'Great Vibes', cursive; color: #b0c4d6; font-size: 0.9rem; margin-left: 10px; }
-        .section-title { font-size: 2.5rem; color: var(--accent-blue); text-transform: uppercase; display: flex; align-items: flex-end; gap: 10px; flex-wrap: wrap; }
+        .script-subtitle { font-family: 'Great Vibes', cursive; color: #ffffff; font-size: 0.9rem; margin-left: 10px; }
+        .section-title { font-size: 2.5rem; color: black; text-transform: uppercase; display: flex; align-items: flex-end; gap: 10px; flex-wrap: wrap; }
         
         .card {
             background: #fff;
@@ -125,7 +125,7 @@
 
         /* --- HERO SECTION --- */
         .hero {
-            background: var(--bg-light-blue);
+            background: plum;
             position: relative;
             padding: 40px;
             display: grid;
@@ -164,7 +164,7 @@
 
         /* --- GRID SYSTEM --- */
         .grid-2-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-        .section-bg { background: var(--bg-light-blue); padding: 30px; border-radius: 12px; }
+        .section-bg { background: plum; padding: 30px; border-radius: 12px; }
         .section-bg-white { background: #fff; padding: 30px; border-radius: 12px; }
 
         /* --- STATS SECTION --- */
@@ -219,8 +219,8 @@
 
         /* --- FOOTER --- */
         .footer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px; }
-        .footer-box { background: #f0f6fb; padding: 40px; border-radius: 12px; display: flex; justify-content: center; align-items: center; min-height: 100px; }
-        .footer-box h2 { color: var(--accent-blue); font-size: 2.5rem; text-transform: uppercase; display: flex; align-items: flex-end; gap: 10px; }
+        .footer-box { background: plum; padding: 40px; border-radius: 12px; justify-content: center; align-items: center; min-height: 100px; }
+        .footer-box h2 { color: white; font-size: 2.5rem; text-transform: uppercase; display: flex; align-items: center; gap: 10px;}
         
         /* --- RESPONSIVE --- */
         @media (max-width: 992px) {

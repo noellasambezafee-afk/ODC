@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <!-- Importation des polices Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;700;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- FontAwesome pour les icônes -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+
+    
+</head>
+<body>
+
+    <header>
+        <a href="hero.html" class="logo-menu">No <span>Ella</span></a>
+        
+        <button class="menu-toggle" id="mobile-menu-btn" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <ul class="nav-links" id="nav-links">
+            <li><a href="hero.html">Accueil</a></li>
+            <li><a href="stats_vid.html">Statistiques & Vidéos</a></li>
+            <li><a href="about.html">À propos & Photos</a></li>
+            <li><a href="service.html">Services</a></li>
+            <li><a href="contact.html" class="active">Contact</a></li>
+        </ul>
+    </header>
+
+<!-- SECTIONS 8 & 9 : FOOTER -->
+        <footer id="footer" class="footer-grid">
+            <div class="footer-box">
+                <h2>Mes Contacts <span class="script-subtitle"></span></h2>
+            </div>
+            <div class="footer-box">
+                <h5>E-mail : noellasambezafee@gmail.com</h5><br>
+                <h5>N° du téléphone : 0343566709</h5><br>
+                <h5>Site web : noellaMadagascar.com</h5>
+            </div>
+        </footer>
+
+    </div>
+
+<!-- JAVASCRIPT POUR LE MENU MOBILE ET LE SCROLL -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.getElementById('mobile-menu-btn');
+            const navLinks = document.getElementById('nav-links');
+            const links = navLinks.querySelectorAll('a');
+
+            // 1. Ouvrir / Fermer le menu sur mobile
+            menuToggle.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+                
+                // Animation du burger vers croix
+                const spans = this.querySelectorAll('span');
+                if(navLinks.classList.contains('active')) {
+                    spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                    spans[1].style.opacity = '0';
+                    spans[2].style.transform = 'rotate(-45deg) translate(7px, -7px)';
+                } else {
+                    spans[0].style.transform = 'none';
+                    spans[1].style.opacity = '1';
+                    spans[2].style.transform = 'none';
+                }
+            });
+
+            // 2. Fermer le menu automatiquement quand on clique sur un lien
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    // Fermer le menu mobile
+                    navLinks.classList.remove('active');
+                    const spans = menuToggle.querySelectorAll('span');
+                    spans[0].style.transform = 'none';
+                    spans[1].style.opacity = '1';
+                    spans[2].style.transform = 'none';
+                });
+            });
+
+            // 3. Mettre en surbrillance le lien actif lors du défilement (Scroll Spy)
+            const sections = document.querySelectorAll('section[id]');
+            
+            window.addEventListener('scroll', function() {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - 150; // Marge ajustable
+                    if (scrollY >= sectionTop) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                links.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === '#' + current) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
